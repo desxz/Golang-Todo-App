@@ -13,6 +13,6 @@ import (
 var todocontroller = controllers.NewTodoController(service.NewTodoService(repository.NewTodoRepository("todos")))
 
 func TodoRoutes(app *fiber.App) {
-	app.Get("/todos", todocontroller.GetTodos).Get("/todos/:id", todocontroller.GetTodo).Post("/todos", todocontroller.CreateTodo).Patch("/todos/:id", todocontroller.UpdateTodo).Delete("/todos/:id", todocontroller.DeleteTodo).Put("/todos/:id/completed", todocontroller.UpdateTodoCompleted)
+	app.Get("/todos", todocontroller.GetTodos).Get("/todos/:id", todocontroller.GetTodo).Post("/todos", todocontroller.CreateTodo).Put("/todos/:id", todocontroller.UpdateTodo).Delete("/todos/:id", todocontroller.DeleteTodo).Put("/todos/:id/completed", todocontroller.UpdateTodoCompleted)
 
 }
