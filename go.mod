@@ -9,6 +9,11 @@ require (
 	go.mongodb.org/mongo-driver v1.8.3
 )
 
+require (
+	github.com/hashicorp/go-version v1.3.0 // indirect
+	github.com/hashicorp/logutils v0.0.0-20150609070431-0dc08b1671f3 // indirect
+)
+
 replace gopkg.in/urfave/cli.v2 => github.com/urfave/cli/v2 v2.3.0
 
 require (
@@ -17,6 +22,7 @@ require (
 	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/golang/snappy v0.0.3 // indirect
 	github.com/klauspost/compress v1.13.6 // indirect
+	github.com/pact-foundation/pact-go v1.6.9
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.1.0 // indirect

@@ -1,8 +1,8 @@
 package controllers
 
 import (
+	"gunmurat7/todo-app-server/helpers"
 	"gunmurat7/todo-app-server/service"
-	"gunmurat7/todo-app-server/utils"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -30,8 +30,8 @@ func NewTodoController(service service.TodoServiceInterface) TodoControllerInter
 //@route 	GET /todos
 //@access 	Public
 func (controller *TodoController) GetTodos(ctx *fiber.Ctx) error {
-	utils.SearchFilter(ctx.Query("search"))
-	page, limit := utils.PaginationWithFiber(ctx, utils.Opt)
+	helpers.SearchFilter(ctx.Query("search"))
+	page, limit := helpers.PaginationWithFiber(ctx, helpers.Opt)
 
 	todos, err := controller.todoService.GetTodosMongo()
 

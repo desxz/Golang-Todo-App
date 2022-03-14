@@ -5,9 +5,8 @@ import (
 	"encoding/json"
 	"errors"
 	"gunmurat7/todo-app-server/config"
+	"gunmurat7/todo-app-server/helpers"
 	"gunmurat7/todo-app-server/models"
-	"gunmurat7/todo-app-server/utils"
-
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -63,7 +62,7 @@ func (repository *TodoRepositoryImpl) GetOneTodo(id string) (*models.Todo, error
 func (repository *TodoRepositoryImpl) GetAllTodos() ([]models.Todo, error) {
 	var modelList []models.Todo
 
-	cursor, err := config.GetCollection(repository.collection).Find(context.TODO(), utils.SFilter, utils.Opt)
+	cursor, err := config.GetCollection(repository.collection).Find(context.TODO(), helpers.SFilter, helpers.Opt)
 
 	if err != nil {
 		return nil, err

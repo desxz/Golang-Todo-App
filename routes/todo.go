@@ -2,6 +2,7 @@ package routes
 
 import (
 	"gunmurat7/todo-app-server/controllers"
+	"gunmurat7/todo-app-server/helpers"
 	"gunmurat7/todo-app-server/repository"
 	"gunmurat7/todo-app-server/service"
 
@@ -9,10 +10,15 @@ import (
 )
 
 // Repository -> Service -> Controller
+func GetController() controllers.TodoControllerInterface {
+	if helpers.IsTestEnv {
+		return controllers.NewTodoController(service.NewTodoService(repository.NewMockRepository()))
+	}
 
-var todocontroller = controllers.NewTodoController(service.NewTodoService(repository.NewTodoRepository("todos")))
+	return controllers.NewTodoController(service.NewTodoService(repository.NewTodoRepository("todos")))
+}
 
 func TodoRoutes(app *fiber.App) {
-	app.Get("/todos", todocontroller.GetTodos).Get("/todos/:id", todocontroller.GetTodo).Post("/todos", todocontroller.CreateTodo).Put("/todos/:id", todocontroller.UpdateTodo).Delete("/todos/:id", todocontroller.DeleteTodo).Put("/todos/:id/completed", todocontroller.UpdateTodoCompleted)
+	app.Get("/todos", GetController().GetTodos).Get("/todos/:id", GetController().GetTodo).Post("/todos", GetController().CreateTodo).Put("/todos/:id", GetController().UpdateTodo).Delete("/todos/:id", GetController().DeleteTodo).Put("/todos/:id/completed", GetController().UpdateTodoCompleted)
 
 }

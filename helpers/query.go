@@ -1,7 +1,6 @@
-package utils
+package helpers
 
 import (
-	"fmt"
 	"gunmurat7/todo-app-server/models"
 	"strconv"
 
@@ -40,7 +39,6 @@ func SearchFilter(key string) {
 		}
 		SFilter = filter
 	} else {
-		fmt.Println("key is empty")
 		SFilter = bson.M{}
 	}
 
