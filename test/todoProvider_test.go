@@ -39,7 +39,7 @@ func (s *Settings) create() {
 	s.ConsumerName = "TodoConsumer"
 	s.BrokerBaseURL = "http://localhost"
 	s.ProviderVersion = "1.0.0"
-	s.ConsumerVersion = "1.0.14"
+	s.ConsumerVersion = "1.0.0"
 }
 
 func (s *Settings) getPactURL() string {

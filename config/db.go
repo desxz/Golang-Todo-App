@@ -3,7 +3,6 @@ package config
 import (
 	"context"
 	"fmt"
-	"os"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -15,7 +14,7 @@ var Client *mongo.Client
 
 func ConnectMongo() error {
 
-	client, err := mongo.NewClient(options.Client().ApplyURI(os.Getenv("MONGO_URI")))
+	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://user:user123@cluster0.8keti.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
 	if err != nil {
 		return err
 	}
